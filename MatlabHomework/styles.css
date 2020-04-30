@@ -1,0 +1,26 @@
+body {
+	background-image:url(背景.jpg)
+}
+h1 {
+	text-align:center;	
+	color:white;
+}
+h2 {
+	color:yellow;	
+}
+p {	
+	font-size:16px;		
+	line-height:32px;	
+	color:#99d2ff;	
+}
+pre {	
+	font-size:16px;		
+	line-height:32px;	
+	color:#99d2ff;	
+}
+a {	
+	font-size:32px;		
+	line-height:128px;	
+	color:yellow;	
+}
+
