@@ -2,6 +2,7 @@ body {
 	background-image:url(背景.jpg)
 }
 h1 {
+	font-size:24px;	
 	text-align:center;	
 	color:white;
 }
@@ -19,7 +20,7 @@ pre {
 	color:#99d2ff;	
 }
 a {	
-	font-size:32px;		
+	font-size:24px;		
 	line-height:128px;	
 	color:yellow;	
 }
