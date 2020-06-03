@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>化学反应热.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="../../../css/markdown-pdf_css-master/markdown.css" type="text/css">
+<script>
+  <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<div style=text-align:center> 
+<h1 id="%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%83%AD">化学反应热</h1>
+</div>
+<h2 id="%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">热力学基本概念</h2>
+<h4 id="1-%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%8E%AF%E5%A2%83">1. 系统与环境</h4>
+<ul>
+<li>敞开系统：<strong>物质</strong>和<strong>能量</strong>均有交换</li>
+<li>封闭系统：只进行能量交换，无物质交换</li>
+<li>隔离系统：物质和能量均不交换</li>
+</ul>
+<h4 id="2-%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%8A%B6%E6%80%81%E4%B8%8E%E7%8A%B6%E6%80%81%E5%87%BD%E6%95%B0">2. 系统的状态与状态函数</h4>
+<p>  系统的状态在热力学上指的是系统处于平衡态。</p>
+<h6 id="%E5%AE%8F%E8%A7%82%E7%89%A9%E7%90%86%E9%87%8F">宏观物理量</h6>
+<p>  大量质点集体行为的总结果，可实验测定</p>
+<h6 id="%E5%AE%8F%E8%A7%82%E6%80%A7%E8%B4%A8">宏观性质</h6>
+<ul>
+<li>强度性质： 无可加性，例如：温度T、压强P、密度$\rho$</li>
+<li>容量性质： 有可加性，例如：体积V、物质的量n</li>
+</ul>
+<h6 id="%E7%8A%B6%E6%80%81%E5%87%BD%E6%95%B0">状态函数</h6>
+<p>  表征系统状态的各种宏观性质。</p>
+<ul>
+<li>从一种状态到另一种状态，状态函数的改变量只与系统的初始状态和最终状态有关，与具体途径无关。</li>
+</ul>
+<h4 id="3-%E7%83%AD%E5%8A%9F%E5%92%8C%E5%86%85%E8%83%BD">3. 热、功和内能</h4>
+<p>  热和功是系统状态变化是与环境交换能量的两种形式。</p>
+<p>  热和功与系统状态变化途径密切相关，因此热和功<strong>不是</strong>系统的<strong>状态函数</strong>。</p>
+<h6 id="%E7%83%AD">热</h6>
+<p>  因温度不同发生能量交换的形式。</p>
+<ul>
+<li>若$Q&gt;0$，系统吸热</li>
+<li>若$Q&lt;0$，系统放热</li>
+</ul>
+<h6 id="%E5%8A%9F">功</h6>
+<ul>
+<li>若$W&gt;0$，环境对系统做功</li>
+<li>若$W&lt;0$，系统对环境做功</li>
+</ul>
+<h6 id="%E5%86%85%E8%83%BD">内能</h6>
+<p>  系统内部能量的总和：U<br>
+  内能为<strong>状态函数</strong>，具有<strong>容量性质</strong>。</p>
+<h4 id="4-%E7%83%AD%E5%8A%9B%E5%AD%A6%E7%AC%AC%E4%B8%80%E5%AE%9A%E5%BE%8B">4. 热力学第一定律</h4>
+<p>$$\Delta U = Q + W$$</p>
+<h2 id="%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%83%AD">化学反应热</h2>
+<p>  某化学反应发生时，系统不做非体积功，反应<strong>终态温度</strong>到反应<strong>始态温度</strong>时，系统<strong>吸出或放出的热量</strong>称为该化学反应的<strong>反应热</strong>。</p>
+<h4 id="1-%E6%81%92%E5%AE%B9%E5%8F%8D%E5%BA%94%E7%83%AD">1. 恒容反应热</h4>
+<p>$$\Delta U = Q_V$$</p>
+<h4 id="2-%E6%81%92%E5%8E%8B%E5%8F%8D%E5%BA%94%E7%83%AD%E4%B8%8E%E7%84%93">2. 恒压反应热与焓</h4>
+<p>  定义焓：$H = U + PV$</p>
+<p>$$Q_p = \Delta H$$</p>
+<h4 id="3-%E6%81%92%E5%AE%B9%E5%8F%8D%E5%BA%94%E7%83%AD%E4%B8%8E%E6%81%92%E5%8E%8B%E5%8F%8D%E5%BA%94%E7%83%AD%E5%85%B3%E7%B3%BB">3. 恒容反应热与恒压反应热关系</h4>
+<p>$$Q_p = Q_V + P\Delta V$$
+$$Q_p = Q_V + \Delta n RT$$</p>
+<p>  式中， $\Delta n = \Sigma n_{气体生成物} - \Sigma n_{气体反应物}$</p>
+<h4 id="4-%E7%83%AD%E5%8C%96%E5%AD%A6%E6%96%B9%E7%A8%8B%E5%BC%8F">4. 热化学方程式</h4>
+<p>$$H_2(g) + \frac{1}{2} O_2(g) \rightarrow H_2O(l), ~~  \Delta_rH_m^\Theta(298.15) = -285.83KJ·mol^{-1}$$</p>
+<p>  其中，$\Delta_rH_m^\Theta(298.15)$为标准摩尔焓变。</p>
+<p>  左下标$r$表示化学反应，$m$表示摩尔，$\Theta$ 表示标准状态。</p>
+<blockquote>
+<p>其中标准状态是指：气体（$P^{\Theta} = 100kPa$）；固体和液体表示纯固体和纯液体。</p>
+</blockquote>
+<blockquote>
+<p>gls：气液固；cr：晶态；am：无定形固体；aq：水溶液</p>
+</blockquote>
+<h2 id="%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%83%AD%E7%9A%84%E8%AE%A1%E7%AE%97">化学反应热的计算</h2>
+<h4 id="1-%E5%88%A9%E7%94%A8%E7%89%A9%E8%B4%A8%E7%9A%84%E6%A0%87%E5%87%86%E6%91%A9%E5%B0%94%E7%94%9F%E6%88%90%E7%84%93%E8%AE%A1%E7%AE%97%E5%8F%8D%E5%BA%94%E7%83%AD">1. 利用物质的标准摩尔生成焓计算反应热</h4>
+<h5 id="%E7%89%A9%E8%B4%A8%E7%9A%84%E6%A0%87%E5%87%86%E6%91%A9%E5%B0%94%E7%94%9F%E6%88%90%E7%84%93">物质的标准摩尔生成焓</h5>
+<ul>
+<li>生成反应：由单质生成某化合物的反应。</li>
+<li>生成焓：生成反应的反应热。</li>
+<li>符号：$\Delta_f H_m^\Theta (T)$</li>
+</ul>
+<blockquote>
+<p>稳定单质的标准摩尔生成焓等于零。</p>
+</blockquote>
+<h5 id="%E7%94%A8%E6%A0%87%E5%87%86%E6%91%A9%E5%B0%94%E7%94%9F%E6%88%90%E7%84%93%E8%AE%A1%E7%AE%97%E5%8F%8D%E5%BA%94%E7%83%AD">用标准摩尔生成焓计算反应热</h5>
+<div style=text-align:center> 
+<h6 id="%E5%85%B8%E5%9E%8B%E4%BE%8B%E9%A2%98"><a href="%E5%8C%96%E5%AD%A6%E5%8F%8D%E5%BA%94%E7%83%AD_%E4%BE%8B1.html">典型例题</a></h6>
+</div>
+
+</body>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });</script>
+</html>
